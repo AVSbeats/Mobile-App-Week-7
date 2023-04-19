@@ -1,0 +1,260 @@
+<!--
+    Name: Abraham Vallejos-Soto
+    Date: 4/16/2023
+    Assignment: Week Lab 6
+-->
+
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+  <head>
+    <title>Boiler Monitor</title>
+
+    <!-- Adjusting the page on mobile screen  -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+      maximum-scale=1.0, user-scalable=no"
+    />
+    <meta charset="UTF-8" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+    <script src="scripts/jquery-1.8.3.min.js"></script>
+    <script src="scripts/jquery.mobile-1.3.1.min.js"></script>
+    <script src="boilerMonitor.js"></script>
+  </head>
+
+  <!-- Entry Page -->
+  <body>
+    <div data-role="page" id="pageEntryPage">
+      <div data-role="header">
+        <h1>Entry Page</h1>
+      </div>
+
+      <div data-role="content">
+        <form id="login-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" />
+          <div data-role="controlgroup" id="numKeypad">
+            <a href="#pageBasicInfo" data-role="button" id="login" type="submit"
+              >Log In</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Basic Information Page -->
+    <div data-role="page" id="pageBasicInfo">
+      <div data-role="header">
+        <a
+          href="#pageMenu"
+          data-role="button"
+          data-icon="bars"
+          data-iconpos="left"
+          data-inline="true"
+          >Menu</a
+        >
+        <h1>Basic Information</h1>
+      </div>
+
+      <div data-role="content">
+        <form id="basicForm">
+          <div data-role="fieldcontain">
+            <label for="boilerId">Boiler ID:</label>
+            <input
+              type="text"
+              placeholder="Enter ID"
+              name="boilerId"
+              data-mini="false"
+              id="boilerId"
+              value=""
+              required
+            />
+          </div>
+
+          <div data-role="fieldcontain">
+            <label for="dateOfPur">Date Of Purchase:</label>
+            <input
+              type="date"
+              name="dateOfPur"
+              data-mini="false"
+              id="dateOfPur"
+              value=""
+              required
+            />
+          </div>
+
+          <div data-role="fieldcontain">
+            <label for="maxPres">Maximun Pressure:</label>
+            <input
+              type="text"
+              placeholder="Enter Value"
+              name="maxPres"
+              data-mini="false"
+              id="maxPres"
+              value=""
+              required
+            />
+          </div>
+
+          <div data-role="fieldcontain">
+            <label for="maxTemp">Maximun Temperature:</label>
+            <input
+              type="text"
+              placeholder="Enter Value"
+              name="maxTemp"
+              data-mini="false"
+              id="maxTemp"
+              value=""
+              required
+            />
+          </div>
+
+          <div data-role="fieldcontain">
+            <label for="changePass">Change Password:</label>
+            <input
+              type="password"
+              placeholder="Enter New Password"
+              name="changePass"
+              data-mini="false"
+              id="changePass"
+              value=""
+              required
+            />
+          </div>
+
+          <input
+            type="submit"
+            id="boilerUpdate"
+            data-icon="check"
+            data-iconpos="left"
+            value="Update"
+            data-inline="true"
+          />
+        </form>
+      </div>
+    </div>
+
+    <!-- Menu Page -->
+    <div data-role="page" id="pageMenu">
+      <div data-role="header">
+        <h1>Boiler Monitor App</h1>
+      </div>
+
+      <div data-role="controlgroup">
+        <div data-role="content">
+          <a href="#pageBasicInfo" data-role="button">Basic Information</a>
+          <a href="#pageTempPres" data-role="button">Temperature/Pressure</a>
+          <a href="#pageGraph" data-role="button">Graph</a>
+          <a href="#pageRec" data-role="button">Recommendations</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Temperature & Pressure Page-->
+    <div data-role="page" id="pageTempPres">
+      <div data-role="header">
+        <a
+          href="#pageMenu"
+          data-role="button"
+          data-icon="bars"
+          data-iconpos="left"
+          data-inline="true"
+          >Menu</a
+        >
+        <h1>Temp & Press</h1>
+      </div>
+
+      <div data-role="content">
+        <form id="tempPressForm">
+          <div data-role="fieldcontain">
+            <label for="presData">Pressure Data:</label>
+            <input
+              type="text"
+              placeholder="Enter Data"
+              name="presData"
+              data-mini="false"
+              id="presData"
+              value=""
+              required
+            />
+          </div>
+
+          <div data-role="fieldcontain">
+            <label for="tempData">Temperature Data:</label>
+            <input
+              type="text"
+              placeholder="Enter Data"
+              name="tempData"
+              data-mini="false"
+              id="tempData"
+              value=""
+              required
+            />
+          </div>
+
+          <input
+            type="submit"
+            id="tempPresUpdate"
+            data-icon="check"
+            data-iconpos="left"
+            value="Enter"
+            data-inline="true"
+          />
+        </form>
+      </div>
+    </div>
+
+    <!-- Graph Page -->
+    <div data-role="page" id="pageGraph">
+      <div data-role="header">
+        <a
+          href="#pageMenu"
+          data-role="button"
+          data-icon="bars"
+          data-iconpos="left"
+          data-inline="true"
+          >Menu</a
+        >
+        <h1>Graph</h1>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Temperature vs Pressure</h3>
+        </div>
+        <div class="panel-body">
+          <canvas
+            id="GraphCanvas"
+            width="500"
+            height="500"
+            style="border: 1px solid black"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations Page -->
+    <div data-role="page" id="pageRec">
+      <div data-role="header">
+        <a
+          href="#pageMenu"
+          data-role="button"
+          data-icon="bars"
+          data-iconpos="left"
+          data-inline="true"
+          >Menu</a
+        >
+        <h1>Recommendations</h1>
+      </div>
+
+      <div data-role="content">
+        <p>Recommendations will be displayed</p>
+      </div>
+    </div>
+  </body>
+</html>
