@@ -1,7 +1,7 @@
 /*
     Name: Abraham Vallejos-Soto
-    Date: 4/16/2023
-    Assignment: Week Lab 6
+    Date: 4/22/2023
+    Assignment: Week Lab 7
 */
 
 // ---------- Login Information Script ----------
