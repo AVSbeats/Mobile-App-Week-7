@@ -75,3 +75,5 @@ $(document).ready(function() {
     alert('Data saved to localStorage');
   });
 });
+
+// ---------- Graph Information Script ----------
