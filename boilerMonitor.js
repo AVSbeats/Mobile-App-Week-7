@@ -77,3 +77,32 @@ $(document).ready(function() {
 });
 
 // ---------- Graph Information Script ----------
+$(document).ready(function() {
+
+  // Retrieve the temperature and pressure data from localStorage
+  var presData = localStorage.getItem('presData');
+  var tempData = localStorage.getItem('tempData');
+
+  // If both values exist, create the graph
+  if (presData && tempData) {
+    var canvas = document.getElementById('graphCanvas');
+    var data = {
+      'Pressure': [presData],
+      'Temperature': [tempData]
+    };
+    new RGraph.Line({
+      id: 'graphCanvas',
+      data: data,
+      options: {
+        linewidth: 5,
+        gutter: {
+          left: 70
+        },
+        colors: ['#FF4500', '#00BFFF']
+      }
+    }).draw();
+  } else {
+    // If either value is missing, display an error message
+    alert('Data not found in localStorage');
+  }
+});
