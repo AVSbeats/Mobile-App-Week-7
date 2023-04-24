@@ -106,3 +106,45 @@ $(document).ready(function() {
     alert('Data not found in localStorage');
   }
 });
+
+// ---------- Recommendation Information Script ----------
+var tempMeter = new RGraph.Meter({
+  id: "tempMeter",
+  min: 0,
+  max: 100,
+  value: 0,
+  options: {
+    tickmarksSmallNum: 10,
+    tickmarksBigNum: 5,
+    labelsCount: 10,
+    linewidthSegments: 3,
+    colorsRanges: [
+      [0, 30, "red"],
+      [30, 70, "yellow"],
+      [70, 100, "green"]
+    ],
+    title: "Temperature (°C)"
+  }
+}).draw();
+
+var presMeter = new RGraph.Meter({
+  id: "presMeter",
+  min: 0,
+  max: 100,
+  value: 0,
+  options: {
+    tickmarksSmallNum: 10,
+    tickmarksBigNum: 5,
+    labelsCount: 10,
+    linewidthSegments: 3,
+    colorsRanges: [
+      [0, 30, "green"],
+      [30, 70, "yellow"],
+      [70, 100, "red"]
+    ],
+    title: "Pressure (psi)"
+  }
+}).draw();
+
+// Display the graphs in the AdviceCanvas div element
+$("#AdviceCanvas").html($("#tempMeter")[0].outerHTML + $("#presMeter")[0].outerHTML);

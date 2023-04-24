@@ -230,7 +230,6 @@
           <h3 class="panel-title">Temperature vs Pressure</h3>
         </div>
         <div class="content">
-          <!-- panel-body (original word)-->
           <canvas
             id="graphCanvas"
             width="500"
@@ -256,7 +255,14 @@
       </div>
 
       <div data-role="content">
-        <p>Recommendations will be displayed</p>
+        <canvas id="tempMeter" width="150" height="150"></canvas>
+        <canvas id="presMeter" width="150" height="150"></canvas>
+        <canvas
+          id="AdviceCanvas"
+          width="550"
+          height="550"
+          style="border: 1px solid #000000"
+        ></canvas>
       </div>
     </div>
   </body>
